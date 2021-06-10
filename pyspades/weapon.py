@@ -1,7 +1,7 @@
 import math
 from typing import Callable, Dict
 from twisted.internet import reactor
-from pyspades.constants import (RIFLE_WEAPON, SMG_WEAPON, SHOTGUN_WEAPON,
+from pyspades.constants import (RIFLE_WEAPON, SMG_WEAPON, SHOTGUN_WEAPON, PISTOL_WEAPON,
                                 HEAD, TORSO, ARMS, LEGS, CLIP_TOLERANCE)
 
 
@@ -159,8 +159,26 @@ class Shotgun(BaseWeapon):
     }
 
 
+class Pistol(BaseWeapon):
+    id = PISTOL_WEAPON
+    name = 'Pistol'
+    delay = 0.6
+    ammo = 10
+    stock = 50
+    reload_time = 2.5
+    slow_reload = False
+
+    damage = {
+        TORSO: 49,
+        HEAD: 100,
+        ARMS: 33,
+        LEGS: 33
+    }
+
+
 WEAPONS = {
     RIFLE_WEAPON: Rifle,
     SMG_WEAPON: SMG,
     SHOTGUN_WEAPON: Shotgun,
+    PISTOL_WEAPON: Pistol,
 }
